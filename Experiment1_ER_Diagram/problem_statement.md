@@ -45,28 +45,103 @@ Design a database for patient management, appointments, medical records, and bil
    - Why you chose the entities and relationships.
    - How you modeled prerequisites or billing.
 
-# ER Diagram Submission - Student Name
+# ER Diagram Submission - Prawin M
 
 ## Scenario Chosen:
-University / Hospital (choose one)
+Hospital
 
 ## ER Diagram:
-![ER Diagram](er_diagram.png)
+![image](https://github.com/user-attachments/assets/538d02ff-8a83-4d35-9167-920b546d1922)
+
 
 ## Entities and Attributes:
-- Entity1: Attributes
-- Entity2: Attributes
-...
+
+### Doctor:
+
+Doctor ID
+
+Name
+
+Phone
+
+Specialization
+
+### Patient:
+
+Patient ID
+
+Name
+
+DOB
+
+Phone
+
+Address
+
+Gender
+
+### Department:
+
+Dept ID
+
+Dept Name
+
+Dept Head
+
+### Appointment:
+
+Appointment ID
+
+Appointment Date and Time
+
+Reason for Wait
+
+Patient ID
+
+Doctor ID
+
+### Medical Record:
+
+Record ID
+
+Patient ID
+
+Doctor ID
+
+Diagnoses
+
+Prescribed Medicine
 
 ## Relationships and Constraints:
-- Relationship1 (Cardinality, Participation)
-- Relationship2 (Cardinality, Participation)
-...
 
+### Assigned to (Doctor — Department)
+
+Cardinality: Many Doctors to One Department (M:1)
+
+Participation: Total for Doctor (Each Doctor must be assigned to a Department)
+
+### Conducts (Doctor — Appointment)
+
+Cardinality: One Doctor can conduct Many Appointments (1:M)
+
+Participation: Total for Appointment (Each Appointment must be conducted by one Doctor)
+
+### Schedule (Patient — Appointment)
+
+Cardinality: One Patient can schedule Many Appointments (1:M)
+
+Participation: Total for Appointment (Each Appointment must be scheduled by one Patient)
+
+### Has Records (Appointment — Medical Record)
+
+Cardinality: One Appointment can have Many Medical Records (1:M)
+
+Participation: Optional (Not every appointment may have a medical record)
 ## Extension (Prerequisite / Billing):
 - Explain how you modeled prerequisites or billing.
 
 ## Design Choices:
 Brief explanation of why you chose certain entities, relationships, and assumptions
 
-## RESULT
+## RESULT:
+The ER Diagram for the given scenario is designed.
