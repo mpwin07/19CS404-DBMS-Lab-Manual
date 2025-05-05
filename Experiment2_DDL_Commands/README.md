@@ -105,123 +105,210 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Insert a student with RollNo 201, Name David Lee, Gender M, Subject Physics, and MARKS 92 into the Student_details table.
 
 ```sql
--- Paste your SQL code below for Question 1
+insert into Student_details(RollNo, Name, Gender, Subject, MARKS)
+Values(201, 'David Lee', 'M', 'Physics', 92);
 ```
 
 **Output:**
 
-![Output1](output.png)
+![image](https://github.com/user-attachments/assets/429395e8-8976-4fc8-8d7b-76b6cb694518)
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Create a table named Products with the following constraints:
+
+ProductID should be the primary key.
+ProductName should be NOT NULL.
+Price should be greater than 0.
+Stock should be greater than or equal to 0.
 
 ```sql
--- Paste your SQL code below for Question 2
+create table Products(
+ProductID int primary key,
+ProductName varchar(255) NOT NULL,
+Price real check (Price>0),
+Stock int check(Stock>=0)
+);
 ```
 
 **Output:**
 
-![Output2](output.png)
+![image](https://github.com/user-attachments/assets/fe67fde7-690d-4ae5-b349-045ac5a0c569)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Create a table named Shipments with the following constraints:
+ShipmentID as INTEGER should be the primary key.
+ShipmentDate as DATE.
+SupplierID as INTEGER should be a foreign key referencing Suppliers(SupplierID).
+OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
 
 ```sql
--- Paste your SQL code below for Question 3
+create table Shipments(
+ShipmentID int primary key,
+ShipmentDate date,
+SupplierID int,
+OrderID int,
+foreign key (SupplierID) references Suppliers(SupplierID),
+foreign key (OrderID) references Orders(OrderID)
+);
 ```
 
 **Output:**
 
-![Output3](output.png)
+![image](https://github.com/user-attachments/assets/3a44b801-8517-46c1-8d39-7de18e542cfd)
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL Query to add an attribute designation in the employee table with the data type VARCHAR(50).
 
 ```sql
--- Paste your SQL code below for Question 4
+alter table employee add column designation varchar(50);
 ```
 
 **Output:**
 
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/dcb47bfe-867d-4072-b494-d850371fe3e6)
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to add a new column MobileNumber of type NUMBER and a new column Address of type VARCHAR(100) to the Student_details table.
 
 ```sql
--- Paste your SQL code below for Question 5
+ALTER table Student_details 
+add column MobileNumber NUMBER; 
+
+ALTER table Student_details 
+add column Address VARCHAR(100);
 ```
 
 **Output:**
 
-![Output5](output.png)
+![image](https://github.com/user-attachments/assets/0b2e9196-3c00-4c31-b08a-518b5b03a8f7)
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Create a new table named item with the following specifications and constraints:
+item_id as TEXT and as primary key.
+item_desc as TEXT.
+rate as INTEGER.
+icom_id as TEXT with a length of 4.
+icom_id is a foreign key referencing com_id in the company table.
+The foreign key should set NULL on updates and deletes.
+item_desc and rate should not accept NULL.
 
 ```sql
--- Paste your SQL code below for Question 6
+create table item(
+item_id TEXT primary key,
+item_desc TEXT,
+rate INTEGER,
+icom_id TEXT(4),
+FOREIGN KEY (icom_id) REFERENCES company(com_id)
+ON UPDATE SET NULL
+ON DELETE SET NULL
+);
 ```
 
 **Output:**
 
-![Output6](output.png)
+![image](https://github.com/user-attachments/assets/69708c0c-19b2-4691-8ee5-fda2630a6a82)
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Insert all students from Archived_students table into the Student_details table.
+
+cid         name        type        notnull     dflt_value  pk
+----------  ----------  ----------  ----------  ----------  ----------
+0           RollNo      INT           0                       1
+1           Name        VARCHAR(100)  0                       0
+2           Gender      VARCHAR(10)   0                       0
+3           Subject     VARCHAR(50)   0                       0
+4           MARKS       INT           0                       0
 
 ```sql
--- Paste your SQL code below for Question 7
+INSERT INTO Student_details(RollNo,      Name,           Gender,      Subject,     MARKS)
+SELECT RollNo,      Name,           Gender,      Subject,     MARKS FROM Archived_students;
 ```
 
 **Output:**
 
-![Output7](output.png)
+![image](https://github.com/user-attachments/assets/d4b97cb0-283d-48a1-b0c9-23adf43f50a3)
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Create a table named Attendance with the following constraints:
+AttendanceID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+AttendanceDate as DATE.
+Status as TEXT should be one of 'Present', 'Absent', 'Leave'.
 
 ```sql
--- Paste your SQL code below for Question 8
+CREATE TABLE Attendance(
+AttendanceID INTEGER PRIMARY KEY,
+EmployeeID INTEGER,
+AttendanceDate DATE,
+Status TEXT CHECK(Status IN ( 'Present', 'Absent', 'Leave')),
+FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
 ```
 
 **Output:**
 
-![Output8](output.png)
+![image](https://github.com/user-attachments/assets/f45392a1-fc0f-400e-9c92-2614372ecabc)
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Create a table named Employees with the following columns:
+
+EmployeeID as INTEGER
+FirstName as TEXT
+LastName as TEXT
+HireDate as DATE
 
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE Employees(
+EmployeeID INTEGER,
+FirstName TEXT,
+LastName TEXT,
+HireDate DATE
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+![image](https://github.com/user-attachments/assets/c3b757f0-3e2f-49a8-a770-33091e569bd0)
 
 **Question 10**
 ---
--- Paste Question 10 here
+Insert the following products into the Products table:
+
+Name        Category     Price       Stock
+----------  -----------  ----------  ----------
+Smartphone  Electronics  800         150
+Headphones  Accessories  200         300
 
 ```sql
--- Paste your SQL code below for Question 10
+INSERT INTO Products(Name, Category, Price, Stock)
+VALUES
+('Smartphone', 'Electronics', 800,150),
+('Headphones', 'Accessories', 200,300);
 ```
 
 **Output:**
 
-![Output10](output.png)
+![image](https://github.com/user-attachments/assets/3991560a-91f4-467a-91bb-8cf236113aac)
+
 
 
 ## RESULT
