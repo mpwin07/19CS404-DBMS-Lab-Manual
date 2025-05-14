@@ -38,123 +38,154 @@ HAVING condition;
 
 **Question 1**
 --
--- Paste Question 1 here
-
+What is the most common diagnosis among patients?
 ```sql
--- Paste your SQL code below for Question 1
+select Diagnosis, count(*) as DiagnosisCount from MedicalRecords
+group by Diagnosis
+order by DiagnosisCount DESC
+limit 1 
 ```
 
 **Output:**
 
-![Output1](output.png)
+![image](https://github.com/user-attachments/assets/0820458e-1cda-4d48-9c87-89c9c901fccf)
 
 **Question 2**
 ---
--- Paste Question 2 here
-
+How many appointments are scheduled for each doctor?
 ```sql
--- Paste your SQL code below for Question 2
+select DoctorID , count(*) as TotalAppointments from Appointments
+group by DoctorID
 ```
 
 **Output:**
 
-![Output2](output.png)
+![image](https://github.com/user-attachments/assets/2615a89a-6928-4fb4-8361-8a290a09036a)
 
 **Question 3**
 ---
--- Paste Question 3 here
-
+What is the average dosage prescribed for each medication?
 ```sql
--- Paste your SQL code below for Question 3
+Select Medication , AVG(Dosage) AS AvgDosage from Prescriptions
+group by Dosage
+order by Medication ASC
 ```
 
 **Output:**
 
-![Output3](output.png)
+![image](https://github.com/user-attachments/assets/c2e36f95-42cc-4f67-95ec-9a9108ec54b0)
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query to find the total income of employees aged 40 or above.
 
+Table: employee
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+age         INTEGER
+city        TEXT
+income      INTEGER
 ```sql
--- Paste your SQL code below for Question 4
+SELECT sum(income) AS total_income from employee
+where age>=40
 ```
 
 **Output:**
 
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/95db1051-0235-4b6b-8189-f2c3738369f0)
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to find the number of employees who are having the same age removing the duplicate values.
+
+Sample table: employee
+
 
 ```sql
--- Paste your SQL code below for Question 5
+select count(DISTINCT age) AS "COUNT" from employee
 ```
 
 **Output:**
 
-![Output5](output.png)
+![image](https://github.com/user-attachments/assets/d3cf6a89-bdff-4fef-886a-682c85112209)
 
 **Question 6**
 ---
--- Paste Question 6 here
-
+Write the SQL query that achieves the selection of category and calculates the sum of the product of price and category ID as Revenue for each category from the "products" table, and includes only those products where the total revenue is greater than 25.
 ```sql
--- Paste your SQL code below for Question 6
+select category_id, sum(price*category_id) as Revenue from products
+group by category_id
+having Revenue>25
 ```
 
 **Output:**
 
-![Output6](output.png)
+![image](https://github.com/user-attachments/assets/6c174003-9f77-48fe-a481-4727bad496b5)
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a SQL query to determine the number of customers who received at least one grade for their activity.
 
+Sample table: customer
 ```sql
--- Paste your SQL code below for Question 7
+select count(*) as "COUNT" from customer
+where grade>=1
 ```
 
 **Output:**
 
-![Output7](output.png)
+![image](https://github.com/user-attachments/assets/5732eadf-44b3-4378-923b-cdbf1d040247)
 
 **Question 8**
 ---
--- Paste Question 8 here
-
+Write the SQL query that accomplishes the grouping of data by age, calculates the maximum income for each age group, and includes only those age groups where the maximum income is greater than 2,000,000.
 ```sql
--- Paste your SQL code below for Question 8
+select age , MAX(income) AS "MAX(income)" from employee
+group by age
+having "MAX(income)">=2000000
 ```
 
 **Output:**
 
-![Output8](output.png)
+![image](https://github.com/user-attachments/assets/387c84b5-c998-4c7e-b586-3e95d08d893f)
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write a SQL query to find the youngest employee in the company?
+
+Table: employee
+
+name        type
+----------  ----------
+id          INTEGER
+name        TEXT
+age         INTEGER
+city        TEXT
+income      INTEGER
 
 ```sql
--- Paste your SQL code below for Question 9
+select name as Employee_Name , min(age) AS Age from employee
 ```
 
 **Output:**
 
-![Output9](output.png)
+![image](https://github.com/user-attachments/assets/bf225b77-5cb7-41c5-90b7-d87a9f5ea115)
 
 **Question 10**
 ---
--- Paste Question 10 here
-
+Write the SQL query that accomplishes the grouping of data by joining date (jdate), calculates the average work hours for each date, and excludes dates where the average work hour is not less than 10.
 ```sql
--- Paste your SQL code below for Question 10
+select jdate, avg(workhour) as "AVG(workhour)" from employee1
+group by jdate
+having "AVG(workhour)"<=10
 ```
 
 **Output:**
 
-![Output10](output.png)
+![image](https://github.com/user-attachments/assets/85e9a65d-daa5-4e3c-933a-4c194a6576b7)
 
 
 ## RESULT
