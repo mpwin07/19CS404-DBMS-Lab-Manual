@@ -34,8 +34,27 @@ END;
 - Use an `IF` statement to compare the values.
 - Display the greater number using `DBMS_OUTPUT.PUT_LINE`.
 
+### Code:
+```sql
+DECLARE
+   a NUMBER := 80;
+   b NUMBER := 45;
+BEGIN
+   IF a > b THEN
+      DBMS_OUTPUT.PUT_LINE('Greater number is: ' || a);
+   ELSE
+      DBMS_OUTPUT.PUT_LINE('Greater number is: ' || b);
+   END IF;
+END;
+/
+```
+
+
+
 **Expected Output:**  
 Greater number is: 80
+
+![image](https://github.com/user-attachments/assets/313a319a-5f81-4a57-b065-d4ec6cb3de54)
 
 ---
 
@@ -47,8 +66,27 @@ Greater number is: 80
 - Use a `WHILE` loop to iterate from 1 to `n`, adding each number to the sum.
 - Display the result using `DBMS_OUTPUT.PUT_LINE`.
 
+### Code:
+```sql
+DECLARE
+   n NUMBER := 10;
+   i NUMBER := 1;
+   sum NUMBER := 0;
+BEGIN
+   WHILE i <= n LOOP
+      sum := sum + i;
+      i := i + 1;
+   END LOOP;
+
+   DBMS_OUTPUT.PUT_LINE('Sum of first ' || n || ' natural numbers is: ' || sum);
+END;
+/
+```
+
 **Expected Output:**  
 Sum of first 10 natural numbers is: 55
+
+![image](https://github.com/user-attachments/assets/ce2b4034-17e4-413d-abc2-ed593c2b0c29)
 
 ---
 
@@ -60,9 +98,36 @@ Sum of first 10 natural numbers is: 55
 - Use a loop to generate the next terms using the formula `c = a + b`.
 - Print each term in the series.
 
+### Code:
+```sql
+DECLARE
+   n NUMBER := 7;
+   a NUMBER := 0;
+   b NUMBER := 1;
+   c NUMBER;
+   i NUMBER := 3;
+BEGIN
+   DBMS_OUTPUT.PUT_LINE(a);
+   DBMS_OUTPUT.PUT_LINE(b);
+
+   WHILE i <= n LOOP
+      c := a + b;
+      DBMS_OUTPUT.PUT_LINE(c);
+      a := b;
+      b := c;
+      i := i + 1;
+   END LOOP;
+END;
+/
+
+```
+
 **Expected Output:**  
 n = 7  
 Fibonacci sequence: 0, 1, 1, 2, 3, 5, 8
+
+![image](https://github.com/user-attachments/assets/bbde01e7-b194-4ec9-8a52-e64f2fd89d5d)
+
 
 ---
 
