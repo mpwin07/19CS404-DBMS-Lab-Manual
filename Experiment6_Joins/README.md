@@ -54,123 +54,192 @@ ON table1.column = table2.column;
 
 **Question 1**
 --
--- Paste Question 1 here
+Write the SQL query that achieves the selection of all columns from the "patients" table and the specialization from the "doctors" table (aliased as "doctor_specialization"), with an inner join on the "doctor_id" column.
+
 
 ```sql
--- Paste your SQL code below for Question 1
+SELECT 
+    p.*, 
+    d.specialization AS doctor_specialization
+FROM 
+    patients p
+INNER JOIN 
+    doctors d ON p.doctor_id = d.doctor_id;
 ```
 
 **Output:**
 
-![Output1](output.png)
+![image](https://github.com/user-attachments/assets/825b52e5-80ca-4afb-86e9-9b0a3e226bd2)
 
 **Question 2**
 ---
--- Paste Question 2 here
+From the following tables write a SQL query to display the customer name, customer city, grade, salesman, salesman city. The results should be sorted by ascending customer_id.  
 
 ```sql
--- Paste your SQL code below for Question 2
+SELECT c.cust_name,c.city,c.grade,s.name as Salesman,s.city
+from customer c
+join salesman s on s.salesman_id = c.salesman_id
+order by c.customer_id ASC
 ```
 
 **Output:**
 
-![Output2](output.png)
+![image](https://github.com/user-attachments/assets/18759ab2-da2e-4624-a393-810607272027)
 
 **Question 3**
 ---
--- Paste Question 3 here
+ From the following tables write a SQL query to find salespeople who received commissions of more than 12 percent from the company. Return Customer Name, customer city, Salesman, commission.  
+
 
 ```sql
--- Paste your SQL code below for Question 3
+SELECT c.cust_name as "Customer Name" ,c.city, s.name as Salesman,s.commission
+from customer c
+join salesman s on s.salesman_id = c.salesman_id
+where s.commission>0.12
 ```
 
 **Output:**
 
-![Output3](output.png)
+![image](https://github.com/user-attachments/assets/5e59dded-3503-4835-a2bf-13b65ebda7cd)
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write the SQL query that achieves the selection of the "cust_name" column from the "customer" table (aliased as "c"), and the "ord_no," "ord_date," and "purch_amt" columns from the "orders" table (aliased as "o"), with a left join on the "customer_id" column.
+
 
 ```sql
--- Paste your SQL code below for Question 4
+SELECT c.cust_name,o.ord_no,o.ord_date,o.purch_amt
+from CUSTOMER c
+left join ORDERS o on o.customer_id = c.customer_id
 ```
 
 **Output:**
 
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/067dd17b-04b2-4005-85b8-a7a46fb88d65)
 
 **Question 5**
 ---
--- Paste Question 5 here
+From the following tables write a SQL query to find those customers with a grade less than 300. Return cust_name, customer city, grade, Salesman, salesmancity. The result should be ordered by ascending customer_id. 
+
 
 ```sql
--- Paste your SQL code below for Question 5
+SELECT c.cust_name    ,    c.city  ,           c.grade, s.name as  Salesman,s.city
+from customer c
+join salesman s on s.salesman_id = c.salesman_id
+where c.grade<300
+order by c.customer_id ASC
 ```
 
 **Output:**
 
-![Output5](output.png)
+![image](https://github.com/user-attachments/assets/193213c2-3229-43fd-bba5-707e592b3eb6)
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write the SQL query that achieves the selection of the "cust_name" and "city" columns from the "customer" table (aliased as "c"), and the "ord_no," "ord_date," and "purch_amt" columns from the "orders" table (aliased as "o"), with a left join on the "customer_id" column and a condition filtering for customers in the city 'London'.
+
 
 ```sql
--- Paste your SQL code below for Question 6
+SELECT 
+    c.cust_name, 
+    c.city, 
+    o.ord_no, 
+    o.ord_date, 
+    o.purch_amt
+FROM 
+    customer c
+LEFT JOIN 
+    orders o ON c.customer_id = o.customer_id
+WHERE 
+    c.city = 'London';
 ```
 
 **Output:**
 
-![Output6](output.png)
+![image](https://github.com/user-attachments/assets/9cc4a3bb-3660-40f1-a6b4-fd649c5201af)
 
 **Question 7**
 ---
--- Paste Question 7 here
+From the following tables write a SQL query to find the details of an order. Return ord_no, ord_date, purch_amt, Customer Name, grade, Salesman, commission. 
+
 
 ```sql
--- Paste your SQL code below for Question 7
+SELECT 
+    o.ord_no,
+    o.ord_date,
+    o.purch_amt,
+    c.cust_name AS "Customer Name",
+    c.grade,
+    s.name AS "Salesman",
+    s.commission
+FROM 
+    orders o
+JOIN 
+    customer c ON o.customer_id = c.customer_id
+JOIN 
+    salesman s ON o.salesman_id = s.salesman_id;
 ```
 
 **Output:**
 
-![Output7](output.png)
+![image](https://github.com/user-attachments/assets/9f9e9b5d-adf6-41ea-b8f0-57f6fb9d5bec)
 
 **Question 8**
 ---
--- Paste Question 8 here
+write a SQL query to find the salesperson and customer who reside in the same city. Return Salesman, cust_name and city.
+
 
 ```sql
--- Paste your SQL code below for Question 8
+SELECT 
+    s.name AS Salesman,
+    c.cust_name,
+    s.city
+FROM 
+    salesman s
+JOIN 
+    customer c ON s.city = c.city;
 ```
 
 **Output:**
 
-![Output8](output.png)
+![image](https://github.com/user-attachments/assets/ea2de0cd-8c45-40d0-8e0a-ff1d5aace3cb)
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write the SQL query that achieves the selection of all columns from the "patients" table (aliased as "p"), with an inner join on the "patient_id" column and a condition filtering for test results with a test date between '2024-03-01' and '2024-03-31'.
+
 
 ```sql
--- Paste your SQL code below for Question 9
+SELECT p.*
+FROM patients p
+INNER JOIN test_results t ON p.patient_id = t.patient_id
+WHERE t.test_date BETWEEN '2024-03-01' AND '2024-03-31';
 ```
 
 **Output:**
 
-![Output9](output.png)
+
+![image](https://github.com/user-attachments/assets/ea2de0cd-8c45-40d0-8e0a-ff1d5aace3cb)
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write the SQL query that achieves the selection of the first name from the "patients" table (aliased as "patient_name") and all columns from the "test_results" table (aliased as "t"), with an inner join on the "patient_id" column.
+
 
 ```sql
--- Paste your SQL code below for Question 10
+SELECT 
+    p.first_name AS patient_name,
+    t.*
+FROM 
+    patients p
+INNER JOIN 
+    test_results t ON p.patient_id = t.patient_id;
 ```
 
 **Output:**
 
-![Output10](output.png)
+![image](https://github.com/user-attachments/assets/2b998725-fe59-4a73-a883-6ae3fc5ca4f8)
 
 
 ## RESULT
